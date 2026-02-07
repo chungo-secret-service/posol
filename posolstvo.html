@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chungo Server</title>
+  <link rel="icon" href="https://i.ibb.co/qHQPnKX/Group-57-1.png" type="image/png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f8f9fa;
+      color: #212529;
+      line-height: 1.6;
+    }
+    header {
+      background: #343a40;
+      color: #ffffff;
+      padding: 2.2rem 1.5rem;
+      text-align: center;
+    }
+    .emblem {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.2rem;
+      border: 2px solid #dee2e6;
+      background: #ffffff;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .emblem img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    nav {
+      background: #495057;
+      padding: 1.1rem 0;
+      text-align: center;
+    }
+    nav a {
+      color: #e9ecef;
+      text-decoration: none;
+      margin: 0 1.6rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    main {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    section {
+      background: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      margin-bottom: 2.5rem;
+      padding: 2.2rem 2.5rem;
+    }
+    h2 {
+      color: #343a40;
+      font-size: 1.7rem;
+      border-bottom: 1px solid #dee2e6;
+      padding-bottom: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.97rem;
+    }
+    th, td {
+      padding: 0.9rem 1.1rem;
+      border: 1px solid #dee2e6;
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      background: #495057;
+      color: #ffffff;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+    .role-emoji {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 12px;
+      vertical-align: middle;
+      border: 1px solid #ced4da;
+    }
+    .join-block {
+      text-align: center;
+      margin: 5rem 0 4rem;
+    }
+    .big-button {
+      display: inline-block;
+      background: #495057;
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 1.3rem 4rem;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.2s ease;
+    }
+    .big-button:hover {
+      background: #343a40;
+    }
+    footer {
+      background: #343a40;
+      color: #ced4da;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.95rem;
+      margin-top: 5rem;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.55);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #ffffff;
+      padding: 2.5rem;
+      border: 1px solid #ced4da;
+      max-width: 500px;
+      text-align: center;
+      border-radius: 6px;
+    }
+    .close {
+      color: #495057;
+      float: right;
+      font-size: 2.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .alt-link {
+      display: inline-block;
+      background: #495057;
+      color: #ffffff;
+      padding: 1.1rem 2.5rem;
+      text-decoration: none;
+      margin-top: 1.5rem;
+      border-radius: 6px;
+    }
+    .alt-link:hover {
+      background: #343a40;
+    }
+    @media (max-width: 768px) {
+      nav a { display: block; margin: 1.2rem 0; }
+      h1 { font-size: 2rem; }
+      .big-button { font-size: 1.3rem; padding: 1rem 3rem; }
+      table, th, td { font-size: 0.92rem; padding: 0.7rem; }
+      .role-emoji { width: 24px; height: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="emblem">
+      <img src="https://i.ibb.co/qHQPnKX/Group-57-1.png">
+    </div>
+    <h1>Chungo Server</h1>
+    <div class="subtitle">Место для общения, новых знакомств и хороших разговоров</div>
+  </header>
+
+  <nav>
+    <a href="#about">О Посольстве</a>
+    <a href="#structure">Структура</a>
+    <a href="#rules">Правила</a>
+    <a href="#join">Вступить</a>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>О Посольстве Chungo</h2>
+      <p>Chungo Server — это уютное место в Discord, где люди приходят пообщаться, найти новых друзей и поддерживать контакты.</p>
+      <p>Здесь нет политики и серьёзных тем — только лёгкие разговоры, мемы, музыка, игры, истории из жизни, обсуждение фильмов, хобби и просто болтовня по голосу или в чате.</p>
+      <p>Если хочется:</p>
+      <ul>
+        <li>познакомиться с интересными людьми</li>
+        <li>поболтать без напряга</li>
+        <li>поделиться музыкой, мемами или рисунками</li>
+        <li>просто быть в тёплой компании</li>
+      </ul>
+      <p>Тогда добро пожаловать — здесь всегда рады новым лицам.</p>
+    </section>
+
+    <section id="structure">
+      <h2>Структура</h2>
+      <p>На сервере есть несколько уровней доступа и ролей — они помогают поддерживать порядок и показывают, кто сколько времени и активности вкладывает в сообщество.</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Ранг / Роль</th>
+            <th>Уровень</th>
+            <th>Описание</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <img src="https://i.ibb.co/twvP1f3Q/UFC-Legacy.png" 
+                   alt="👑" class="role-emoji">
+              <strong>Президент ББ</strong>
+            </td>
+            <td>Самый высший</td>
+            <td>Верховный руководитель Посольства Chungo Server. Обладает абсолютной властью, принимает окончательные решения.</td>
+          </tr>
+          <tr>
+            <td>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Flag_of_Switzerland_%28Pantone%29.svg/64px-Flag_of_Switzerland_%28Pantone%29.svg.png" 
+                   alt="🇨🇭" class="role-emoji">
+              <strong>Флаг Швейцарии</strong>
+            </td>
+            <td>Средний</td>
+            <td>Основной дипломатический корпус. Обеспечивают нейтралитет, порядок и соблюдение протокола.</td>
+          </tr>
+          <tr>
+            <td>
+              <img src="https://i.ibb.co/h1dqBMtP/8-point-star.png" 
+                   alt="🥸" class="role-emoji">
+              <strong>Воры в законе</strong>
+            </td>
+            <td>Нижние</td>
+            <td>Базовый уровень гражданства. Выполняют указания вышестоящих, соблюдают кодекс и правила.</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <p style="font-size: 0.94rem; color: #6c757d; text-align: center; margin-top: 1.5rem;">
+        Полный актуальный список носителей ролей доступен в Discord-сервере Посольства.
+      </p>
+    </section>
+
+    <section id="rules">
+      <h2>Правила</h2>
+      <ul>
+        <li>Уважай других участников</li>
+        <li>Без оскорблений, токсичности и спама</li>
+        <li>NSFW-контент только в специальном канале (18+)</li>
+        <li>Не рекламируй другие сервера без разрешения</li>
+        <li>Если что-то не нравится — пиши администрации, разберёмся по-человечески</li>
+      </ul>
+      <p>Всё просто: веди себя нормально — и тебе будут рады.</p>
+    </section>
+
+    <div class="join-block" id="join">
+      <h2>Присоединяйся к нам!</h2>
+      <a href="https://discord.gg/bUKZeZrN4m" target="_blank" class="big-button">
+        Вступить в Chungo
+      </a>
+    </div>
+  </main>
+
+  <!-- Модальное окно -->
+  <div id="problemModal" class="modal">
+    <div class="modal-content">
+      <span class="close">×</span>
+      <h2>Что-то пошло не так</h2>
+      <p>Если ссылка не работает или есть другие проблемы — попробуй зайти через резервный сервис.</p>
+      <a href="https://chungo-service.netlify.app" class="alt-link">Перейти на резервный сервис</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© Chungo Server 2026</p>
+    <p>discord.gg/bUKZeZrN4m • всегда рады новым людям</p>
+  </footer>
+
+  <script>
+    const modal = document.getElementById('problemModal');
+    const closeBtn = document.querySelector('.close');
+
+    closeBtn.onclick = () => { modal.style.display = 'none'; };
+    window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+
+    window.addEventListener('error', () => {
+      modal.style.display = 'flex';
+    }, true);
+  </script>
+
+</body>
+</html>
